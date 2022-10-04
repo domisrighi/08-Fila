@@ -59,7 +59,7 @@ void menu()
 void inicializar()
 {
 
-	// se a lista j� possuir elementos
+	// se a lista já possuir elementos
 	// libera a memoria ocupada
 	NO* aux = inicio;
 	while (aux != NULL) {
@@ -88,13 +88,34 @@ void insere()
 	cin >> novo->valor;
 	novo->prox = NULL;
 
+	if (inicio == NULL)
+	{
+		inicio = novo;
+	}
+	else
+	{
+		
+		NO* aux = inicio;
+		while (aux->prox != NULL) {
+			aux = aux->prox;
+		}
+		aux->prox = novo;
+
+		cout << "Elemento Inserido!" << endl;
+	}
 
 }
 
 void remove()
 {
+	NO* posEle = fim;
+	if (posEle == NULL) {
+		cout << "Lista está Vazia" << endl;
+	}
+	NO* elemSeg = inicio->prox;
+	inicio = elemSeg;
 
-
-
+	free(elemSeg->ant);
+	elemSeg->ant = NULL;
 }
 
